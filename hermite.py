@@ -55,7 +55,7 @@ def PolynomeHermite(x1, x2, x1p, x2p, theta, interpolateAbscissas):
 def InterpolationHermite(points, slopes, nbPoints, interpolateAbscissas):
     interpolatedPoints = []
     n = len(points)
-    
+
     for i in range(n - 1):
         x1, x2 = points[i], points[i + 1]
         x1p, x2p = slopes[i], slopes[i + 1]
@@ -68,9 +68,9 @@ def InterpolationHermite(points, slopes, nbPoints, interpolateAbscissas):
             else:
                 point = []
                 point.append((j * ((x2[0] - x1[0]) / precision)) + x1[0])
-                point.append(PolynomeHermite(x1, x2, x1p, x2p, t, interpolateAbscissas)) 
+                point.append(PolynomeHermite(x1, x2, x1p, x2p, t, interpolateAbscissas))
                 interpolatedPoints.append(point)
-        
+
     return interpolatedPoints
 
 def DrawPlot(points, slopes, precision, drawPoints, drawSlopes, drawCenteredReplica, center, intervalLength, interpolateAbscissas, symmetry, xSymmetry, ySymmetry):
@@ -82,9 +82,10 @@ def DrawPlot(points, slopes, precision, drawPoints, drawSlopes, drawCenteredRepl
     fig, ax = plt.subplots()
 
     # Interpolation
+    if len(interpolations) < 2: return (fig, ax)
     ix, iy = zip(*interpolations)
     ax.plot(ix, iy, '-', label='Main Interpolation', color='blue', linewidth=2)
-    
+
     # Points
     if drawPoints:
         ox, oy = zip(*points)
@@ -100,7 +101,7 @@ def DrawPlot(points, slopes, precision, drawPoints, drawSlopes, drawCenteredRepl
     if drawCenteredReplica:
         shiftX = centerX - sum(ix) / len(ix)
         shiftY = centerY - sum(iy) / len(iy)
-        
+
         ixShifted = [x + shiftX for x in ix]
         iyShifted = [y + shiftY for y in iy]
         ax.plot(ixShifted, iyShifted, '-', label='Centered Interpolation', color='orange', linewidth=2)
@@ -116,24 +117,24 @@ def DrawPlot(points, slopes, precision, drawPoints, drawSlopes, drawCenteredRepl
         iySymX = [2 * centerY - y for y in iy]
 
         ax.plot(ixSymX, iySymX, '-', label='X-Symmetry', color='Yellow', linewidth=2)
-        
+
     if ySymmetry:
         ixSymY = [2 * centerX - x for x in ix]
         iySymY = iy
 
         ax.plot(ixSymY, iySymY, '-', label='Y-Symmetry', color='Cyan', linewidth=2)
-    
+
     ax.set_xlim(centerX - intervalLength, centerX + intervalLength)
     ax.set_ylim(centerY - intervalLength, centerY + intervalLength)
-    
+
     # Major Grid
     ax.grid(which='both', linestyle='--', linewidth=0.5, alpha=0.5)
     ax.grid(which='major', linestyle='--', linewidth=0.5, alpha=0.5)
-    
+
     # Minor Grid
     ax.set_xticks([i for i in range(int(centerX - intervalLength), int(centerX + intervalLength) + 1, 1)])
     ax.set_yticks([i for i in range(int(centerY - intervalLength), int(centerY + intervalLength) + 1, 1)])
-    
-    ax.set_title('Plot Drawer')
+
+    #ax.set_title('Plot Drawer')
     ax.legend()
     return (fig, ax)
