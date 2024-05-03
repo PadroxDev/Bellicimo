@@ -8,6 +8,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from hermite import DrawPlot
 from hermite_params import HermiteParams
+from nautilus import MoveNautilus
 from constants import *
 
 class App(tk.Tk):
@@ -154,12 +155,12 @@ class App(tk.Tk):
 		intervalLengthEntry.pack(side="right", fill="x")
 
 		self.hermiteParams.drawPoints.set(1)
-		self.hermiteParams.drawSlopes.set(1)
-		self.hermiteParams.drawCenteredReplica.set(1)
-		self.hermiteParams.interpolateAbscissas.set(1)
-		self.hermiteParams.symmetry.set(1)
-		self.hermiteParams.xSymmetry.set(1)
-		self.hermiteParams.ySymmetry.set(1)
+		self.hermiteParams.drawSlopes.set(0)
+		self.hermiteParams.drawCenteredReplica.set(0)
+		self.hermiteParams.interpolateAbscissas.set(0)
+		self.hermiteParams.symmetry.set(0)
+		self.hermiteParams.xSymmetry.set(0)
+		self.hermiteParams.ySymmetry.set(0)
 
 		drawPoints = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
 		drawPoints.pack(fill="x", padx=15, pady=(20, 5))
@@ -258,6 +259,14 @@ class App(tk.Tk):
 	def drawNautilus(self):
 		self.big_text_label.config(text="Nautilus")
 		self.nautilusCheckbox.config(text="Blob")
+
+		# Récupérer fig et ax de MoveNautilus
+		self.fig, self.ax = MoveNautilus()
+
+		if hasattr(self, 'pltWidget'):
+			self.pltWidget.destroy()
+
+		# Convertir la figure en widget Tkinter
 		pltCanvas = FigureCanvasTkAgg(self.fig, master=self.renderFrame)
 		figW, figH = self.fig.get_size_inches()
 		ratio = figW / figH
