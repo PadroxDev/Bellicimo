@@ -1,22 +1,11 @@
 import matplotlib.pyplot as plt
 
 
-def MoveNautilus():
-    # Paramètres du sous-marin
-    masse = 50000000
-    volume = 50000
+def MoveNautilus(masse, volume, duree_phase, puissance_max_y, puissance_max_x, puissance_min_y):
 
     # Constantes
     g = 9.81
     rho = 1000
-
-    # Durée des phases en secondes
-    duree_phase = 280
-
-    # Initialisation des puissances des moteurse en Newton
-    puissance_max_x = 10000000
-    puissance_max_y = 300000
-    puissance_min_y = -300000
 
     # Initialisation du temps
     temps = 0

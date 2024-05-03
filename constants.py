@@ -30,6 +30,13 @@ DEFAULT_CENTER_X = 5
 DEFAULT_CENTER_Y = 5
 PARAM_WIDTH = 20
 
+DEFAULT_MASS = 50000000
+DEFAULT_VOLUME = 50000
+DEFAULT_PHASE_DURATION = 280
+DEFAULT_MAX_X_POWER = 10000000
+DEFAULT_MAX_Y_POWER = 300000
+DEFAULT_MIN_Y_POWER = -300000
+
 DEFAULT_POINTS = [
     Point(4, 9.6, 3, -0.1),
     Point(8.6, 8, -3, -3.5),
@@ -42,43 +49,3 @@ DEFAULT_POINTS = [
     Point(6, 7, -0.4, 1),
     Point(4, 9.6, 3, -0.1)
 ]
-
-# points = [
-#     [4, 9.6],
-#     [8.6, 8],
-#     [8.2, 4.6],
-#     [9.4, 5.4],
-#     [8, 3.2],
-#     [6, 2],
-#     [2.5, 2],
-#     [2, 7],
-#     [6, 7],
-#     [4, 9.6]
-# ]
-
-# slopes = [
-#     [3, -0.1],
-#     [-3, -3.5],
-#     [2.5, -0.5],
-#     [0.4, -3],
-#     [-5, 0],
-#     [1, -3],
-#     [-2, 2],
-#     [2, 1.5],
-#     [-0.4, 1],
-#     [3, -0.1]
-# ]
-
-# centerPoint = [15, 15]
-
-# precision = 50
-
-# intervalLength = 30
-
-# drawPoints = True
-# drawSlopes = True
-# drawCenteredReplica = True
-# interpolateAbscissas = True
-# symmetry = True
-# xSymmetry = True
-# ySymmetry = True

@@ -9,6 +9,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from hermite import DrawPlot
 from hermite_params import HermiteParams
 from nautilus import MoveNautilus
+from nautilus_params import NautilusParams
 from constants import *
 
 class App(tk.Tk):
@@ -24,6 +25,8 @@ class App(tk.Tk):
 		self.yPointVar = tk.StringVar()
 		self.xPenteVar = tk.StringVar()
 		self.yPenteVar = tk.StringVar()
+
+		self.nautilusParams = NautilusParams()
 
 	def initWindow(self):
 		x, y = self.getCenterPos(DEFAULT_WIDTH, DEFAULT_HEIGHT)
@@ -79,6 +82,84 @@ class App(tk.Tk):
 		self.nautilusCheckbox = tk.Checkbutton(self.sidebarFrame, text="Blob", variable=self.nautilusVar, font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, selectcolor=C_MAIN, activebackground=C_SECONDARY, onvalue=0, offvalue=1, indicatoron=False)
 		self.nautilusCheckbox.pack(side="top", pady=(20, 5))
 		self.nautilusCheckbox.config(command=self.choose)
+
+		self.nautilusParams.mass.set(DEFAULT_MASS)
+
+		mass = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
+		mass.pack(fill="x", padx=15, pady=(20, 5))
+
+		tk.Label(mass, text="Mass", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
+			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
+
+		massEntry = tk.Entry(mass, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
+			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.mass)
+		massEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
+		massEntry.pack(side="right", fill="x")
+
+		self.nautilusParams.volume.set(DEFAULT_VOLUME)
+
+		volume = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
+		volume.pack(fill="x", padx=15, pady=(20, 5))
+
+		tk.Label(volume, text="Volume", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
+			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
+
+		volumeEntry = tk.Entry(volume, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
+			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.volume)
+		volumeEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
+		volumeEntry.pack(side="right", fill="x")
+
+		self.nautilusParams.phaseDuration.set(DEFAULT_PHASE_DURATION)
+
+		phaseDuration = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
+		phaseDuration.pack(fill="x", padx=15, pady=(20, 5))
+
+		tk.Label(phaseDuration, text="Phase Duration", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
+			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
+
+		phaseDurationEntry = tk.Entry(phaseDuration, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
+			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.phaseDuration)
+		phaseDurationEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
+		phaseDurationEntry.pack(side="right", fill="x")
+
+		self.nautilusParams.maxYPower.set(DEFAULT_MAX_Y_POWER)
+
+		maxYPower = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
+		maxYPower.pack(fill="x", padx=15, pady=(20, 5))
+
+		tk.Label(maxYPower, text="MaxYPower", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
+			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
+
+		maxYPowerEntry = tk.Entry(maxYPower, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
+			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.maxYPower)
+		maxYPowerEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
+		maxYPowerEntry.pack(side="right", fill="x")
+
+		self.nautilusParams.maxXPower.set(DEFAULT_MAX_X_POWER)
+
+		maxXPower = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
+		maxXPower.pack(fill="x", padx=15, pady=(20, 5))
+
+		tk.Label(maxXPower, text="MaxXPower", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
+			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
+
+		maxXPowerEntry = tk.Entry(maxXPower, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
+			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.maxXPower)
+		maxXPowerEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
+		maxXPowerEntry.pack(side="right", fill="x")
+
+		self.nautilusParams.minYPower.set(DEFAULT_MIN_Y_POWER)
+
+		minYPower = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
+		minYPower.pack(fill="x", padx=15, pady=(20, 5))
+
+		tk.Label(minYPower, text="MinYPower", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
+			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
+
+		minYPowerEntry = tk.Entry(minYPower, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
+			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.minYPower)
+		minYPowerEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
+		minYPowerEntry.pack(side="right", fill="x")
 
 	def drawButtonBlob(self):
 		self.nautilusCheckbox = tk.Checkbutton(self.sidebarFrame, text="Nautilus", variable=self.nautilusVar, font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, selectcolor=C_MAIN, activebackground=C_SECONDARY, onvalue=1, offvalue=0, indicatoron=False)
@@ -256,12 +337,19 @@ class App(tk.Tk):
 		self.pltWidget.configure(bg=C_MAIN, width=(1920-SIDEBAR_WIDTH)*0.8, height=(1920-SIDEBAR_WIDTH) * ratio*0.8)
 		self.pltWidget.pack()
 
+	def updateNautilusPlt(self):
+		masse = self.nautilusParams.mass.get()
+		volume = self.nautilusParams.volume.get()
+		duree_phase = self.nautilusParams.phaseDuration.get()
+		puissance_max_y = self.nautilusParams.maxYPower.get()
+		puissance_max_x = self.nautilusParams.maxXPower.get()
+		puissance_min_y = self.nautilusParams.minYPower.get()
+		self.fig, self.ax = MoveNautilus(masse, volume, duree_phase, puissance_max_y, puissance_max_x, puissance_min_y)
+
 	def drawNautilus(self):
+		self.updateNautilusPlt()
 		self.big_text_label.config(text="Nautilus")
 		self.nautilusCheckbox.config(text="Blob")
-
-		# Récupérer fig et ax de MoveNautilus
-		self.fig, self.ax = MoveNautilus()
 
 		if hasattr(self, 'pltWidget'):
 			self.pltWidget.destroy()
