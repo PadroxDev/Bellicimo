@@ -18,6 +18,9 @@ def MoveNautilus(masse, volume, duree_phase, puissance_max_y, puissance_max_x, p
     positions = [position.copy()]
     phase_positions = []
 
+    # Damping Strength     
+    damping_strength = 100
+
     # Simulation du mouvement du sous-marin
     dt = 1
     while temps <= (8 * duree_phase):
@@ -56,7 +59,7 @@ def MoveNautilus(masse, volume, duree_phase, puissance_max_y, puissance_max_x, p
         poussee_archimede = volume * rho * g
 
         # Calcul de la force nette sur le sous-marin
-        force_nette_x = force_moteur_x
+        force_nette_x = force_moteur_x - damping_strength * vitesse[0]
         force_nette_y = force_moteur_y + poussee_archimede - masse * g
 
         # Calcul de l'accélération du sous-marin
