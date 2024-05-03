@@ -18,7 +18,7 @@ def MoveNautilus(masse, volume, duree_phase, puissance_max_y, puissance_max_x, p
     positions = [position.copy()]
     phase_positions = []
 
-    # Damping Strength     
+    # Damping Strength
     damping_strength = 100
 
     # Simulation du mouvement du sous-marin
@@ -76,7 +76,7 @@ def MoveNautilus(masse, volume, duree_phase, puissance_max_y, puissance_max_x, p
         positions.append(position.copy())
 
         # Si c'est un changement de phase, enregistrer la position actuelle
-        if temps % duree_phase == 0:
+        if temps % duree_phase == 0 and (temps / duree_phase < 3 or temps / duree_phase >= 6):
             phase_positions.append(position.copy())
 
         # Mise à jour du temps

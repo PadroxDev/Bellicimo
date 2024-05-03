@@ -86,7 +86,7 @@ class App(tk.Tk):
 		self.nautilusParams.mass.set(DEFAULT_MASS)
 
 		mass = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
-		mass.pack(fill="x", padx=15, pady=(20, 5))
+		mass.pack(fill="x", padx=20, pady=(200, 5))
 
 		tk.Label(mass, text="Mass", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
 			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
@@ -94,12 +94,12 @@ class App(tk.Tk):
 		massEntry = tk.Entry(mass, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
 			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.mass)
 		massEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
-		massEntry.pack(side="right", fill="x")
+		massEntry.pack(side="right", fill="x", pady=(20,20))
 
 		self.nautilusParams.volume.set(DEFAULT_VOLUME)
 
 		volume = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
-		volume.pack(fill="x", padx=15, pady=(20, 5))
+		volume.pack(fill="x", padx=20, pady=(20, 5))
 
 		tk.Label(volume, text="Volume", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
 			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
@@ -107,12 +107,12 @@ class App(tk.Tk):
 		volumeEntry = tk.Entry(volume, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
 			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.volume)
 		volumeEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
-		volumeEntry.pack(side="right", fill="x")
+		volumeEntry.pack(side="right", fill="x", pady=(20,20))
 
 		self.nautilusParams.phaseDuration.set(DEFAULT_PHASE_DURATION)
 
 		phaseDuration = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
-		phaseDuration.pack(fill="x", padx=15, pady=(20, 5))
+		phaseDuration.pack(fill="x", padx=20, pady=(20, 5))
 
 		tk.Label(phaseDuration, text="Phase Duration", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
 			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
@@ -120,12 +120,12 @@ class App(tk.Tk):
 		phaseDurationEntry = tk.Entry(phaseDuration, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
 			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.phaseDuration)
 		phaseDurationEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
-		phaseDurationEntry.pack(side="right", fill="x")
+		phaseDurationEntry.pack(side="right", fill="x", pady=(20,20))
 
 		self.nautilusParams.maxYPower.set(DEFAULT_MAX_Y_POWER)
 
 		maxYPower = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
-		maxYPower.pack(fill="x", padx=15, pady=(20, 5))
+		maxYPower.pack(fill="x", padx=20, pady=(20, 5))
 
 		tk.Label(maxYPower, text="MaxYPower", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
 			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
@@ -133,12 +133,12 @@ class App(tk.Tk):
 		maxYPowerEntry = tk.Entry(maxYPower, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
 			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.maxYPower)
 		maxYPowerEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
-		maxYPowerEntry.pack(side="right", fill="x")
+		maxYPowerEntry.pack(side="right", fill="x", pady=(20,20))
 
 		self.nautilusParams.maxXPower.set(DEFAULT_MAX_X_POWER)
 
 		maxXPower = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
-		maxXPower.pack(fill="x", padx=15, pady=(20, 5))
+		maxXPower.pack(fill="x", padx=20, pady=(20, 5))
 
 		tk.Label(maxXPower, text="MaxXPower", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
 			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
@@ -146,12 +146,12 @@ class App(tk.Tk):
 		maxXPowerEntry = tk.Entry(maxXPower, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
 			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.maxXPower)
 		maxXPowerEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
-		maxXPowerEntry.pack(side="right", fill="x")
+		maxXPowerEntry.pack(side="right", fill="x", pady=(20,20))
 
 		self.nautilusParams.minYPower.set(DEFAULT_MIN_Y_POWER)
 
 		minYPower = tk.Frame(self.sidebarFrame, bg=C_SECONDARY)
-		minYPower.pack(fill="x", padx=15, pady=(20, 5))
+		minYPower.pack(fill="x", padx=20, pady=(20, 5))
 
 		tk.Label(minYPower, text="MinYPower", font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, width=PARAM_WIDTH).pack(
 			side="left", padx=(0, SIDEBAR_WIDTH*0.05))
@@ -159,7 +159,7 @@ class App(tk.Tk):
 		minYPowerEntry = tk.Entry(minYPower, font=F_CALIBRI, bg=C_SECONDARY, bd=0,  highlightcolor=C_ACCENT, highlightthickness=2,
 			highlightbackground=C_MAIN, fg=C_MAIN, textvariable=self.nautilusParams.minYPower)
 		minYPowerEntry.bind("<Return>", lambda event: self.drawNautilus(), lambda event: self.drawNautilus())
-		minYPowerEntry.pack(side="right", fill="x")
+		minYPowerEntry.pack(side="right", fill="x", pady=(20, 5))
 
 	def drawButtonBlob(self):
 		self.nautilusCheckbox = tk.Checkbutton(self.sidebarFrame, text="Nautilus", variable=self.nautilusVar, font=F_CALIBRI, fg=C_MAIN, bg=C_SECONDARY, selectcolor=C_MAIN, activebackground=C_SECONDARY, onvalue=1, offvalue=0, indicatoron=False)
@@ -355,6 +355,8 @@ class App(tk.Tk):
 			self.pltWidget.destroy()
 
 		# Convertir la figure en widget Tkinter
+		self.fig.set_facecolor("none")
+		self.ax.set_facecolor("none")
 		pltCanvas = FigureCanvasTkAgg(self.fig, master=self.renderFrame)
 		figW, figH = self.fig.get_size_inches()
 		ratio = figW / figH
